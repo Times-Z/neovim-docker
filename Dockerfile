@@ -11,6 +11,9 @@ ENV PATH /go/bin:$PATH
 RUN apk update \
     && apk add --no-cache \
         alpine-sdk \
+        build-base \
+        composer \
+        curl \
         git \
         go \
         neovim \
@@ -20,10 +23,13 @@ RUN apk update \
         php8-cli \
         ranger \
         ripgrep \
+        tree-sitter \
+        wget \
         xclip \
     && ln -s /usr/bin/python3 /usr/bin/python \
     && addgroup -g ${GUID} ${GRP} \
-    && adduser -u ${UID} -h "/home/${USR}" -G "${GRP}" ${USR} --disabled-password
+    && adduser -u ${UID} -h "/home/${USR}" -G "${GRP}" ${USR} --disabled-password \
+    && npm install -g typescript sass
 
 USER ${USR}
 

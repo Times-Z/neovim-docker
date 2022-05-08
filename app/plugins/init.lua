@@ -1,5 +1,16 @@
 return {
 
+    ["williamboman/nvim-lsp-installer"] = {
+        opt = true,
+        setup = function()
+            require("core.utils").packer_lazy_load "nvim-lsp-installer"
+            -- reload the current file so lsp actually starts for it
+            vim.defer_fn(function()
+                vim.cmd 'if &ft == "packer" | echo "" | else | silent! e %'
+            end, 0)
+        end
+    },
+
     ["neovim/nvim-lspconfig"] = {
         after = "nvim-lsp-installer",
         module = "lspconfig",
@@ -121,6 +132,14 @@ return {
                 show_trailing_blankline_indent = false,
                 show_first_indent_level = false
             }
+        end
+    },
+
+    ["nvim-treesitter/nvim-treesitter"] = {
+        event = {"BufRead", "BufNewFile"},
+        run = ":TSUpdate",
+        config = function()
+            require "custom.plugins.configs.treesitter"
         end
     }
 
