@@ -1,5 +1,8 @@
 
-config = {
+local M = {}
+
+M.theme = 'doom'
+M.config = {
    header = {
          "                                   ",
          "                                   ",
@@ -17,45 +20,45 @@ config = {
          "       ⠻⣿⣿⣿⣿⣶⣶⣾⣿⣿⣿⣿⣿⣿⣿⣿⡟⢀⣀⣤⣾⡿⠃     ",
          "                                   ",
       },
-      shortcut = {
+   center = {
          {
             icon = " ",
-            desc = "Find File",
-            shortcut = "space f f",
+            desc = "Find File                                    ",
+            key = "space f f",
             action = "Telescope find_files"
          },
          {
-            icon = "",
-            desc = "Recents",
-            shortcut = "space f o",
+            icon = " ",
+            desc = "Recents                                      ",
+            key = "space f o",
             action = "Telescope oldfiles"
          },
          {
-            icon = "",
-            desc = "Find Word",
-            shortcut = "space f w",
+            icon = " ",
+            desc = "Find Word                                    ",
+            key = "space f w",
             action = "Telescope live_grep"
          },
          {
-            icon = "洛",
-            desc = "New File",
-            shortcut = "space f n",
+            icon = "洛 ",
+            desc = "New File                                    ",
+            key = "space f n",
             action = "DashboardNewFile"
          },
          {
-            icon = "🗀",
-            desc = "File Browser",
-            shortcut = "space ,",
+            icon = "🗀 ",
+            desc = "File Browser                                ",
+            key = "space ,",
             action = "RnvimrToggle"
          },
          {
-            icon = "➤",
-            desc = "three toogle",
-            shortcut = "space ;",
+            icon = "➤ ",
+            desc = "three toogle                                ",
+            key = "space ;",
             action = "NvimTreeToggle"
          }
        },
-      footer = {
+   footer = {
          "    Deleted code is debugged code.    ",
          "           _ ._  _ , _ ._             ",
          "         (_ ' ( `  )_  .__)           ",
@@ -65,12 +68,16 @@ config = {
          "               ;   ;                  ",
          "               /   \\                 ",
          "______________/_ __ \\________________",
-      
-      }
+   }
 }
 
+M.hide = {
+   statusline = false,
+   tabline = true,
+   winbar = true
+}
 
-return config
+return M
 
 
 -- local db = require('dashboard')

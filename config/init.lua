@@ -73,9 +73,12 @@ packer.startup(function(use)
         event = 'VimEnter',
         config = function()
           require('dashboard').setup {
-              config = require('plugins.config.dashboard')
+            theme = require('plugins.config.dashboard').theme,
+            config = require('plugins.config.dashboard').config;
+            hide = require('plugins.config.dashboard').hide
           }
-        end
+        end,
+        requires = {'nvim-tree/nvim-web-devicons'}
       }
 
     use {
@@ -169,7 +172,6 @@ if packer_bootstrap == false then
     -- Config
     require('plugins.config.theme')
     require('mapping')
-    require('plugins.packer')
     require('plugins.lsp')
     require('plugins.cmp')
     
