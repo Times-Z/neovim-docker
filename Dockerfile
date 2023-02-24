@@ -1,27 +1,27 @@
-ARG ALPINE_VERSION=latest
+ARG ALPINE_VERSION=3.17.2
 
-FROM alpine:edge
+FROM alpine:${ALPINE_VERSION}
 
 ENV UID=1000
 ENV GUID=1000
 ENV USR=neovim
 ENV GRP=neovim
-ENV GOROOT=/usr/lib/go
-ENV GOPATH=/go
-ENV PATH=/go/bin:$PATH
-# ENV TERM=xterm-kitty
+ENV BUILD_PACKAGE="alpine-sdk \
+    build-base \
+    cargo \
+    g++ \
+    make \
+    rust \
+    yarn \
+    "
 
 RUN apk update \
     && apk add --no-cache \
-        alpine-sdk \
-        build-base \
+        ${BUILD_PACKAGE} \
         bash \
-        cargo \
         composer \
         curl \
         git \
-        go \
-        g++ \
         make \
         neovim \
         neovim-doc \
@@ -32,8 +32,6 @@ RUN apk update \
         py3-psutil \
         ranger \
         ripgrep \
-        rust \
-        yarn \
         wget \
         xclip \
     && python -m ensurepip --upgrade \
@@ -59,12 +57,13 @@ RUN apk update \
         yaml-language-server \
         vscode-langservers-extracted \
     && pip3 install python-lsp-server pyright pyre-check --no-cache-dir \
-    && yarn cache clean --all
+    && yarn cache clean --all \
+    && apk del ${BUILD_PACKAGE}
 
 USER ${USR}
 
 ADD --chown=${USR}:${GRP} config /home/${USR}/.config/nvim
 
-# RUN nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
+RUN nvim --headless -c 'autocmd User PackerComplete quitall'
 
 WORKDIR /home/${USR}

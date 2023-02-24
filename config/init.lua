@@ -12,12 +12,18 @@ local ensure_packer = function()
 local packer_bootstrap = ensure_packer()
 local packer = require('packer')
 
-config = {
-    max_jobs = 2,
-    git = {
-        clone_timeout = 120,
+packer.init({
+    max_jobs = nil,
+      git = {
+        clone_timeout = 99999,
     },
-}
+    display = {
+        non_interactive = true
+    },
+    log = {
+        level = 'debug'
+    },
+})
 
 packer.startup(function(use)
 
