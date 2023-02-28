@@ -37,6 +37,13 @@ packer.startup(function(use)
     use 'onsails/lspkind-nvim'
 
     use {
+  	'VonHeikemen/fine-cmdline.nvim',
+  	requires = {
+    		{'MunifTanjim/nui.nvim'}
+  	}
+    }
+
+    use {
         'kevinhwang91/rnvimr',
         config = function()
             require('plugins.config.rnvimr')

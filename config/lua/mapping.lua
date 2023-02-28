@@ -3,6 +3,8 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
+vim.api.nvim_set_keymap('n', ':', '<cmd>FineCmdline<CR>', {noremap = true})
+
 vim.keymap.set('n', '<leader>w', '<cmd>write<cr>', {
     desc = 'Save'
 })
