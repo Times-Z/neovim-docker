@@ -29,9 +29,6 @@ vim.keymap.set('n', '<leader>ff', '<cmd>Telescope find_files<cr>', {
     desc = 'Telecope find file'
 })
 
-vim.keymap.set('n', '<leader>fn', '<cmd>DashboardNewFile<cr>', {
-    desc = 'New file'
-})
 vim.keymap.set('n', '<leader>m', '<cmd>CodeActionMenu<cr>', {
     desc = 'code action menu'
 })
