@@ -37,11 +37,18 @@ packer.startup(function(use)
     use 'onsails/lspkind-nvim'
 
     use {
-  	'VonHeikemen/fine-cmdline.nvim',
-  	requires = {
-    		{'MunifTanjim/nui.nvim'}
-  	}
+        'VonHeikemen/fine-cmdline.nvim',
+        requires = {
+                {'MunifTanjim/nui.nvim'}
+        }
     }
+
+    use {
+        'gelguy/wilder.nvim',
+        config = function()
+          -- config goes here
+        end,
+      }
 
     use {
         'kevinhwang91/rnvimr',
@@ -122,7 +129,7 @@ packer.startup(function(use)
 
     use {
         'akinsho/bufferline.nvim',
-        tag = "v2.*"
+        tag = "v3.*"
     }
 
     use {
