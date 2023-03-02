@@ -73,8 +73,8 @@ M.config = {
 
 M.hide = {
    statusline = false,
-   tabline = true,
-   winbar = true
+   tabline = false,
+   winbar = false
 }
 
 return M

@@ -2,11 +2,6 @@ stages:
   - build
   - github
 
-variables:
-  UID: 1000
-  
-
-
 build:docker:
     stage: build
     image: docker:stable
@@ -14,7 +9,6 @@ build:docker:
       - docker build -t "$CI_REGISTRY_IMAGE:stable" .
       - echo "$CI_REGISTRY_PASSWORD" | docker login -u "$CI_REGISTRY_USER" "$CI_REGISTRY" --password-stdin
       - docker push "$CI_REGISTRY_IMAGE:stable"
-
 
 deploy:github:
   stage: github
@@ -26,7 +20,6 @@ deploy:github:
   script:
     - |
       echo ${GITHUB_SSH_PRIVATE} | base64 -d > ~/.ssh/id_rsa
-      echo ${GITHUB_SSH_PUBLIC} | base64 -d > ~/.ssh/id_rsa.pub
       chmod 600 -R ~/.ssh
       eval $(ssh-agent -s)
       ssh-add ~/.ssh/id_rsa
