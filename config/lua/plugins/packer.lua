@@ -148,12 +148,10 @@ packer.startup(function(use)
         end
     }
 
-    use({
-        "giusgad/pets.nvim",
-        requires = {
-          "giusgad/hologram.nvim",
-          "MunifTanjim/nui.nvim",
-        }
-      })
+    use 'giusgad/hologram.nvim'
+
+    use 'MunifTanjim/nui.nvim'
+
+    use 'giusgad/pets.nvim'
 
 end)
