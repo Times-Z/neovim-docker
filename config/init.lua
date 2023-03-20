@@ -1,3 +1,7 @@
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+vim.opt.termguicolors = true
+
 local ensure_packer = function()
     local fn = vim.fn
     local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
@@ -42,4 +46,13 @@ if packer_bootstrap == false then
             theme = "catppuccin"
         }
     }
+    require("nvim-tree").setup({
+	sort_by = "case_sensitive",
+  	renderer = {
+    		group_empty = true,
+  	},
+  	filters = {
+		dotfiles = true,
+  	},
+})
 end

@@ -33,3 +33,7 @@ vim.keymap.set('n', '<leader>m', '<cmd>CodeActionMenu<cr>', {
     desc = 'code action menu'
 })
 
+vim.keymap.set('n', '<leader>;', '<cmd>NvimTreeToggle<cr>', {
+    desc = 'Nvim tree toogle'
+})
+

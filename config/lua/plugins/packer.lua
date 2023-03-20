@@ -154,4 +154,6 @@ packer.startup(function(use)
 
     use 'giusgad/pets.nvim'
 
+    use 'nvim-tree/nvim-tree.lua'
+
 end)
